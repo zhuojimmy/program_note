@@ -46,7 +46,7 @@ Node.js本质上是异步的，需要用异步的方式编程。除非清晰理�
 Node.js运行系统有执行栈，压入想要执行的任务。操作系统从栈里取任务，管理运行必要的操作。
 为了运行异步代码，这种方法将无效。Libuv包采用队列存储每个异步操作的回调函数。时间循环在特定的时间间隔运行，并且检查栈，这在Node.js的术语中叫*tick*。如果栈空，将回调函数从队列中压进栈等待执行。
 
-'
+'''javascript
 console.log("i am first");
 
 setTimeout(function timeout() {
@@ -54,7 +54,7 @@ setTimeout(function timeout() {
 }, 5000);
 
 console.log("i am third");
-'
+''''
 输出：
 '
 i am first
@@ -163,3 +163,8 @@ View是model的视觉表现。View从Model取得数据显示在浏览器或者�
 顾名思义，Controller的任务是接收输入，将其转换成model或者view的命令。管理model做状态转换，或者管理view做信息更新。
 
 ## 安装Sails.js
+
+## 理解Sails.js项目目录结构
+
+#### assets
+包含静态文件，图像，HTML，JS文件。在Express.js中，我们需要使用'express.static'定义静态路径
