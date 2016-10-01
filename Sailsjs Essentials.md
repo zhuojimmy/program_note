@@ -1,5 +1,5 @@
 # 回顾Node.js
-***
+
 * Node.js结构
 * 单线程系统
 * 事件循环和无阻塞IO模型
@@ -46,23 +46,23 @@ Node.js本质上是异步的，需要用异步的方式编程。除非清晰理�
 Node.js运行系统有执行栈，压入想要执行的任务。操作系统从栈里取任务，管理运行必要的操作。
 为了运行异步代码，这种方法将无效。Libuv包采用队列存储每个异步操作的回调函数。时间循环在特定的时间间隔运行，并且检查栈，这在Node.js的术语中叫*tick*。如果栈空，将回调函数从队列中压进栈等待执行。
 
-'''javascript
+```javascript
 console.log("i am first");
 
 setTimeout(function timeout() {
- 	console.log("i am second");
+     console.log("i am second");
 }, 5000);
 
 console.log("i am third");
-''''
+```
 输出：
-'
+```
 i am first
 i am third
 i am second
-'
+```
 另一种情况：
-'
+```javascript
 console.log("i am first");
 
 setTimeout(function timeout() {
@@ -70,15 +70,15 @@ setTimeout(function timeout() {
 }, 0);
 
 console.log("i am third");
-'
+```
 输出：
-'
+```
 i am first
 i am third
 i am
-'
+```
 继续测试：
-'
+```javascript
 console.log("i am 1");
 
 setTimeout(function timeout() {
@@ -90,20 +90,19 @@ setTimeout(function timeout() {
 },0);
 
 console.log("i am 4");
-'
+```
 输出：
-'
+```
 i am 1
 i am 4
 i am 3
 i am 2
-'
-## 总结
+```
 
 ***
 
 # 第二章 Node.js网络服务
-***
+
 * 网络服务的执行
 * HTTP操作和他的作用
 * 使用HTTP模块开发网络服务
@@ -123,8 +122,7 @@ i am 2
 
 * CREAT——POST
 * READ——GET
-* UPDATA——PUT
-	>PUT和POST的区别？？？？
+* UPDATA——PUT     *PUT和POST的区别？？？？*
 * DELETE——DELETE
 
 ## 使用HTTP模块开发网络服务器
@@ -167,4 +165,4 @@ View是model的视觉表现。View从Model取得数据显示在浏览器或者�
 ## 理解Sails.js项目目录结构
 
 #### assets
-包含静态文件，图像，HTML，JS文件。在Express.js中，我们需要使用'express.static'定义静态路径
+包含静态文件，图像，HTML，JS文件。在Express.js中，我们需要使用`express.static`定义静态路径
